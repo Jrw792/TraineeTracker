@@ -1,0 +1,113 @@
+{
+  "trainees": [
+    {
+      "id": "michael-wilson",
+      "name": "Michael Wilson",
+      "start_date": "2025-05-13",
+      "active": true,
+      "session_count_estimate": 102,
+      "session_count_as_of": "2026-05-05",
+      "notes": "",
+      "current_summary": "Senior trainee acting as a de facto coach. Form is consistently called out as a teaching example by guest trainers — splash receiving, lockup technique, rolls and bumps. Routinely steps in to coach Dalton, Jack, and Nick, and on April 21 effectively co-ran the session with Hailey when Jimmy was absent. Currently refining a pile driver as a potential new finisher and getting reps in practice matches with guest workers."
+    },
+    {
+      "id": "hailey-stokely",
+      "name": "Hailey Stokely",
+      "start_date": "2025-04-08",
+      "active": true,
+      "session_count_estimate": 110,
+      "session_count_as_of": "2026-05-05",
+      "notes": "",
+      "current_summary": "Veteran trainee operating at near-trainer level. Came back cleanly from her knee injury in late March and has been flagged as polished across drills since. Effectively co-runs sessions when guest trainers work alongside Jimmy — notably stepped in as head trainer with Michael on April 21, and is consistently the first to coach less-experienced trainees through their reps. Currently locking in a hurricanrana off the second rope and a satisfaction ahead of the next TAW show."
+    },
+    {
+      "id": "jacob-justice",
+      "name": "Jacob Justice",
+      "start_date": "2025-12-05",
+      "active": true,
+      "session_count_estimate": 36,
+      "session_count_as_of": "2026-04-07",
+      "notes": "",
+      "current_summary": "Selling has visibly improved this spring. Confidence and pacing remain the biggest gaps — flagged as timid and slow on the rope-throw drills on April 7. Still landing elbow-first on bumps, which got flagged as an injury risk. Has missed several recent sessions, so progress has been hard to track."
+    },
+    {
+      "id": "tyler-skelton",
+      "name": "Tyler Skelton",
+      "start_date": "2026-02-06",
+      "active": true,
+      "session_count_estimate": 19,
+      "session_count_as_of": "2026-04-21",
+      "notes": "",
+      "current_summary": "Big-frame trainee still learning how his height and size shape his ringwork. Flip bumps and punches have been called out as good given his frame; pacing on the rope drills and the small package pin have come up as places where his size needs technique to compensate. German suplex came together cleanly on April 24 with only minor pointers. A handful of sessions have been quiet — coaches haven't had to flag much, but he hasn't been pushed hard yet either."
+    },
+    {
+      "id": "jay-taylor",
+      "name": "Jay Taylor",
+      "start_date": "2025-04-08",
+      "active": false,
+      "session_count_estimate": 106,
+      "session_count_as_of": "2026-04-07",
+      "notes": "Removed from program April 14, 2026. Blackballed from local wrestling scene due to unsafe work, lack of attendance, refusal to accept criticism."
+    },
+    {
+      "id": "dc",
+      "name": "DC",
+      "start_date": "2026-02-10",
+      "active": true,
+      "session_count_estimate": 22,
+      "session_count_as_of": "2026-05-05",
+      "notes": "",
+      "current_summary": "Drives his own technical refinement — actively trying new variations like the running drop kick in the corner and pushing his back suplex and angle slam on the bag. Form continues to need polish on fundamentals: rope timing, bumping on the elbows, forearm presentation, and feeding into the corner have all been flagged in recent weeks. Got specifically called out on April 21 for attempting a move he'd never trained during improv. Stayed late on May 5 for one-on-one forearm work with Hailey, which is the kind of follow-through he tends to do well."
+    },
+    {
+      "id": "dalton",
+      "name": "Dalton",
+      "start_date": "2025-08-05",
+      "active": true,
+      "session_count_estimate": 76,
+      "session_count_as_of": "2026-05-05",
+      "notes": "",
+      "current_summary": "The most coaching-intensive trainee in the program right now. Despite roughly nine months in, fundamentals — selling, bracing, pacing, lockups, corner-pull form — keep getting flagged, and Hailey called him out directly on April 14 about how far behind his time-in-program he is. Injury risk has come up multiple times, including landing elbow-first on bumps and not bracing for impact. There's been progress in pieces (completed the splash spot on April 14, German suplex on the bag on April 24, clean corner pull by the end of May 5), but the pattern is heavy correction every session. Hailey has stepped up as a regular partner and coach for him."
+    },
+    {
+      "id": "jack",
+      "name": "Jack",
+      "start_date": "2026-03-24",
+      "active": true,
+      "session_count_estimate": 14,
+      "session_count_as_of": "2026-05-05",
+      "notes": "Age 14.",
+      "current_summary": "Joined six weeks ago at 14 and has been on a fast track since — picked up lockups, rope running, rolls, bumps, and headlocks progressively over the spring. Bump form was specifically called out as good once he started taking them. Strength is the current ceiling — not yet able to lift the bag for a German suplex on April 24 — but his dropkick form clicked by his third attempt the same night. Non-bumping restriction has been lifted as of May 5 since a parent is always present at training."
+    },
+    {
+      "id": "nick",
+      "name": "Nick",
+      "start_date": "2026-04-14",
+      "active": true,
+      "session_count_estimate": 3,
+      "session_count_as_of": "2026-05-05",
+      "notes": "Jack's dad. Officially joined the program April 14, 2026.",
+      "current_summary": "Three sessions in and already executing cleanly. Picks up corrections on the first try — foot placement during bumps, the missed scoop-slam jump, the pin fumbles all corrected immediately. Got specifically praised for his Japanese arm drag on April 21 and his German suplex pickup on April 24. Officially joined April 14 alongside his son Jack. Easy student so far."
+    },
+    {
+      "id": "brandon",
+      "name": "Brandon",
+      "start_date": "2026-05-05",
+      "active": true,
+      "session_count_estimate": 1,
+      "session_count_as_of": "2026-05-05",
+      "notes": "Joined the program May 5, 2026 from Cody McCulley's personal roster. Has been training for a while and has worked a few matches at TAW.",
+      "current_summary": "Brand new to the program but not new to wrestling — joined May 5 from Cody McCulley's roster with a few TAW matches already under his belt. First session was clean: solid clothesline form, no flags during the line drill, smooth in the triple threat practice match with Michael and DC. Worth a few sessions before pushing on technical critique."
+    },
+    {
+      "id": "jeff",
+      "name": "Jeff",
+      "start_date": "2026-05-05",
+      "active": true,
+      "session_count_estimate": 1,
+      "session_count_as_of": "2026-05-05",
+      "notes": "Joined the program May 5, 2026 from Cody McCulley's personal roster. Relatively new to training.",
+      "current_summary": "Brand new to the program and relatively new to training overall — joined May 5 from Cody McCulley's roster. Bump form and selling on the receiving end were the first things flagged on May 5, both positively. First time delivering clotheslines that night — Jimmy walked him through form, he ran a few practice reps, then cleared the live drill with no flags. Easy to coach so far."
+    }
+  ]
+}

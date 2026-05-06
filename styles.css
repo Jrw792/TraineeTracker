@@ -1,0 +1,425 @@
+/* ---------- Reset / base ---------- */
+*, *::before, *::after { box-sizing: border-box; }
+
+:root {
+  --bg: #0f0f10;
+  --bg-soft: #16161a;
+  --card: #1a1a1d;
+  --card-hover: #222227;
+  --border: #2a2a2f;
+  --border-strong: #3a3a40;
+  --text: #f1f1f3;
+  --text-strong: #ffffff;
+  --muted: #9a9aa3;
+  --accent: #c41e3a;
+  --accent-hover: #d8324d;
+  --accent-soft: rgba(196, 30, 58, 0.12);
+  --shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
+  --radius: 12px;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: -apple-system, BlinkMacSystemFont, "Inter", "Segoe UI", Roboto, system-ui, sans-serif;
+  font-size: 17px;
+  line-height: 1.55;
+  -webkit-font-smoothing: antialiased;
+  -webkit-text-size-adjust: 100%;
+  min-height: 100%;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+button {
+  font: inherit;
+  color: inherit;
+}
+
+.container {
+  max-width: 920px;
+  margin: 0 auto;
+  padding: 1.25rem;
+}
+
+/* ---------- Header ---------- */
+.site-header {
+  background: rgba(15, 15, 16, 0.85);
+  backdrop-filter: saturate(180%) blur(12px);
+  -webkit-backdrop-filter: saturate(180%) blur(12px);
+  border-bottom: 1px solid var(--border);
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.header-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 0.85rem;
+  padding-bottom: 0.85rem;
+  gap: 1rem;
+}
+
+.brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  font-weight: 700;
+  font-size: 1.05rem;
+  letter-spacing: 0.01em;
+  color: var(--text-strong);
+}
+
+.brand-mark {
+  display: inline-block;
+  width: 14px;
+  height: 14px;
+  background: var(--accent);
+  border-radius: 3px;
+  transform: rotate(45deg);
+}
+
+nav {
+  display: flex;
+  gap: 0.25rem;
+}
+
+nav a {
+  padding: 0.5rem 0.9rem;
+  border-radius: 8px;
+  color: var(--muted);
+  font-size: 0.95rem;
+  font-weight: 500;
+  transition: background 0.15s, color 0.15s;
+}
+
+nav a:hover {
+  color: var(--text);
+}
+
+nav a.active {
+  background: var(--card);
+  color: var(--text-strong);
+}
+
+/* ---------- Typography ---------- */
+h1 {
+  font-size: 2rem;
+  margin: 1.25rem 0 0.4rem;
+  font-weight: 700;
+  letter-spacing: -0.015em;
+  color: var(--text-strong);
+}
+
+h2 {
+  font-size: 1.25rem;
+  margin: 1.5rem 0 0.5rem;
+  font-weight: 700;
+  color: var(--text-strong);
+}
+
+p { margin: 0.6rem 0; }
+
+.subtitle {
+  color: var(--muted);
+  margin: 0 0 1.5rem;
+  font-size: 0.98rem;
+}
+
+/* ---------- Roster grid ---------- */
+.roster-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 0.85rem;
+}
+
+.trainee-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1.1rem 1.2rem;
+  display: block;
+  transition: background 0.15s, border-color 0.15s, transform 0.05s;
+}
+
+.trainee-card:active {
+  transform: scale(0.99);
+}
+
+@media (hover: hover) {
+  .trainee-card:hover {
+    background: var(--card-hover);
+    border-color: var(--accent);
+  }
+}
+
+.trainee-card h3 {
+  margin: 0;
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--text-strong);
+}
+
+.trainee-card .meta {
+  color: var(--muted);
+  font-size: 0.85rem;
+  margin-top: 0.35rem;
+}
+
+.trainee-card .preview {
+  margin-top: 0.75rem;
+  font-size: 0.94rem;
+  color: var(--text);
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  line-clamp: 3;
+  overflow: hidden;
+}
+
+/* ---------- Trainee detail ---------- */
+.back-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  color: var(--muted);
+  margin: 0.5rem 0 0;
+  font-size: 0.94rem;
+  font-weight: 500;
+  padding: 0.35rem 0;
+}
+
+.back-link:hover { color: var(--accent); }
+
+.header-row {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin: 1.25rem 0 0.4rem;
+}
+
+.header-row h1 { margin: 0; }
+
+.badge {
+  display: inline-block;
+  padding: 0.2rem 0.6rem;
+  background: var(--accent);
+  color: white;
+  border-radius: 999px;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.badge.muted {
+  background: transparent;
+  color: var(--muted);
+  border: 1px solid var(--border-strong);
+}
+
+.summary-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-left: 3px solid var(--accent);
+  padding: 1.2rem 1.4rem;
+  border-radius: var(--radius);
+  margin: 0.6rem 0 1.5rem;
+  font-size: 1.02rem;
+  line-height: 1.65;
+}
+
+.summary-card .summary-label {
+  display: block;
+  font-size: 0.72rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--accent);
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+}
+
+.notes-block {
+  background: var(--bg-soft);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1rem 1.2rem;
+  margin: 0.5rem 0 1.5rem;
+}
+
+.notes-block .notes-label {
+  display: block;
+  font-size: 0.72rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--muted);
+  font-weight: 700;
+  margin-bottom: 0.4rem;
+}
+
+/* ---------- Session list ---------- */
+.session-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  gap: 0.65rem;
+}
+
+.session-list a {
+  display: block;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 0.95rem 1.15rem;
+  transition: background 0.15s, border-color 0.15s;
+}
+
+@media (hover: hover) {
+  .session-list a:hover {
+    background: var(--card-hover);
+    border-color: var(--accent);
+  }
+}
+
+.session-list .date {
+  font-weight: 700;
+  font-size: 1.02rem;
+  color: var(--text-strong);
+}
+
+.session-list .attendees {
+  color: var(--muted);
+  font-size: 0.86rem;
+  margin-top: 0.3rem;
+  line-height: 1.5;
+}
+
+/* ---------- Markdown note ---------- */
+article.note {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1.5rem 1.6rem 2rem;
+  margin: 0.75rem 0 2rem;
+  box-shadow: var(--shadow);
+}
+
+article.note > :first-child { margin-top: 0; }
+article.note > :last-child { margin-bottom: 0; }
+
+article.note h1 {
+  font-size: 1.6rem;
+  margin: 0 0 1rem;
+  padding-bottom: 0.55rem;
+  border-bottom: 2px solid var(--accent);
+}
+
+article.note h2 {
+  font-size: 0.85rem;
+  margin: 1.75rem 0 0.6rem;
+  color: var(--accent);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-weight: 800;
+}
+
+article.note h3 {
+  font-size: 1.02rem;
+  margin: 1.1rem 0 0.3rem;
+  color: var(--text-strong);
+  font-weight: 700;
+}
+
+article.note ul,
+article.note ol {
+  padding-left: 1.4rem;
+  margin: 0.5rem 0 0.8rem;
+}
+
+article.note li {
+  margin: 0.4rem 0;
+}
+
+article.note li::marker {
+  color: var(--muted);
+}
+
+article.note p { margin: 0.6rem 0; }
+
+article.note strong {
+  color: var(--text-strong);
+  font-weight: 700;
+}
+
+article.note em {
+  color: var(--muted);
+  font-style: normal;
+  display: inline-block;
+}
+
+article.note hr {
+  border: none;
+  border-top: 1px solid var(--border);
+  margin: 1.5rem 0;
+}
+
+article.note code {
+  background: var(--bg-soft);
+  border: 1px solid var(--border);
+  padding: 0.1rem 0.35rem;
+  border-radius: 4px;
+  font-size: 0.9em;
+}
+
+/* ---------- Empty / loading states ---------- */
+.empty-state {
+  padding: 3rem 1rem;
+  text-align: center;
+  color: var(--muted);
+  font-size: 0.95rem;
+}
+
+.loading {
+  padding: 2rem 1rem;
+  text-align: center;
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+/* ---------- Footer ---------- */
+.site-footer {
+  border-top: 1px solid var(--border);
+  margin-top: 3rem;
+  padding: 1rem 0 calc(1rem + env(safe-area-inset-bottom, 0));
+  color: var(--muted);
+  font-size: 0.82rem;
+  text-align: center;
+}
+
+/* ---------- Mobile tweaks ---------- */
+@media (max-width: 600px) {
+  body { font-size: 16px; }
+  .container { padding: 1rem; }
+  h1 { font-size: 1.6rem; }
+  article.note { padding: 1.2rem 1.2rem 1.6rem; }
+  article.note h1 { font-size: 1.35rem; }
+  .header-inner { padding-top: 0.7rem; padding-bottom: 0.7rem; }
+  nav a { padding: 0.4rem 0.65rem; font-size: 0.92rem; }
+  .brand-text { display: none; }
+  .summary-card { padding: 1rem 1.1rem; font-size: 1rem; }
+}
+
+/* ---------- Inactive trainee tweak ---------- */
+.trainee-card.inactive {
+  opacity: 0.55;
+}
