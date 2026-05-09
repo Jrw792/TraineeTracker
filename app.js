@@ -1,11 +1,54 @@
-/* Wrestling Training site — single-page app, hash routing */
+/* Wrestling Training site — single-page app, hash routing,
+   light/dark theme, futuristic-tech aesthetic */
 (() => {
   const APP = document.getElementById('app');
   const NAV_LINKS = document.querySelectorAll('nav a');
   const LAST_UPDATED = document.getElementById('last-updated');
+  const THEME_BTN = document.getElementById('theme-toggle');
 
   let rosterCache = null;
   let indexCache = null;
+
+  /* ---------- Theme handling ---------- */
+  const THEME_KEY = 'tp-theme';
+
+  function systemPrefersDark() {
+    return window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+  }
+
+  function effectiveTheme() {
+    return document.documentElement.getAttribute('data-effective-theme')
+      || (systemPrefersDark() ? 'dark' : 'light');
+  }
+
+  function setTheme(theme) {
+    document.documentElement.setAttribute('data-theme', theme);
+    document.documentElement.setAttribute('data-effective-theme', theme);
+    localStorage.setItem(THEME_KEY, theme);
+    updateThemeMeta(theme);
+  }
+
+  function updateThemeMeta(theme) {
+    // Keep iOS chrome in sync with the active theme
+    const tag = document.querySelector('meta[name="theme-color"]:not([media])');
+    if (tag) tag.setAttribute('content', theme === 'dark' ? '#07070a' : '#fafafb');
+  }
+
+  function toggleTheme() {
+    const next = effectiveTheme() === 'dark' ? 'light' : 'dark';
+    setTheme(next);
+  }
+
+  // Sync if the OS theme changes and the user hasn't picked a side yet.
+  if (window.matchMedia) {
+    const mq = window.matchMedia('(prefers-color-scheme: dark)');
+    mq.addEventListener && mq.addEventListener('change', () => {
+      if (!localStorage.getItem(THEME_KEY)) {
+        const eff = systemPrefersDark() ? 'dark' : 'light';
+        document.documentElement.setAttribute('data-effective-theme', eff);
+      }
+    });
+  }
 
   /* ---------- Data loaders ---------- */
   async function loadRoster() {
@@ -40,13 +83,29 @@
     return dt.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
   }
 
+  function fmtDateShort(iso) {
+    if (!iso) return '';
+    const m = iso.match(/^(\d{4})-(\d{2})-(\d{2})/);
+    if (!m) return iso;
+    const [, y, mo, d] = m;
+    return `${y}.${mo}.${d}`;
+  }
+
   function fmtSessionLabel(key) {
     const m = key.match(/^(\d{4})-(\d{2})-(\d{2})(?:-(\d+))?$/);
     if (!m) return key;
     const [, y, mo, d, n] = m;
     const dt = new Date(+y, +mo - 1, +d);
-    const base = dt.toLocaleDateString('en-US', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' });
+    const base = dt.toLocaleDateString('en-US', { weekday: 'long', month: 'long', day: 'numeric', year: 'numeric' });
     return n ? `${base} — Session ${n}` : base;
+  }
+
+  function fmtSessionStamp(key) {
+    const m = key.match(/^(\d{4})-(\d{2})-(\d{2})(?:-(\d+))?$/);
+    if (!m) return key;
+    const [, y, mo, d, n] = m;
+    const stamp = `${y}.${mo}.${d}`;
+    return n ? `${stamp}/${n}` : stamp;
   }
 
   function escapeHtml(s) {
@@ -81,19 +140,23 @@
       .sort((a, b) => a.name.localeCompare(b.name));
 
     APP.innerHTML = `
-      <h1>Roster</h1>
-      <p class="subtitle">${active.length} active trainee${active.length === 1 ? '' : 's'}. Tap a card for the most recent progress summary.</p>
+      <span class="page-eyebrow">Active Roster</span>
+      <h1 class="page-title">Trainees</h1>
+      <p class="page-subtitle">${active.length} active member${active.length === 1 ? '' : 's'}. Tap a card to read the most recent progress summary.</p>
       <div class="roster-grid">
         ${active.map(t => {
           const summary = t.current_summary || 'No summary written yet.';
           const preview = summary.length > 200 ? summary.slice(0, 200).trimEnd() + '…' : summary;
-          const sessionsLine = t.session_count_estimate
-            ? `Started ${fmtDate(t.start_date)} · ~${t.session_count_estimate} sessions`
-            : `Started ${fmtDate(t.start_date)}`;
+          const sessions = t.session_count_estimate
+            ? `~${t.session_count_estimate} sessions · since ${fmtDateShort(t.start_date)}`
+            : `Joined ${fmtDateShort(t.start_date)}`;
           return `
             <a class="trainee-card" href="#/trainee/${encodeURIComponent(t.id)}">
-              <h3>${escapeHtml(t.name)}</h3>
-              <div class="meta">${escapeHtml(sessionsLine)}</div>
+              <div class="trainee-card-header">
+                <h3>${escapeHtml(t.name)}</h3>
+                <span class="id-tag">${escapeHtml(t.id)}</span>
+              </div>
+              <div class="meta">${escapeHtml(sessions)}</div>
               <div class="preview">${escapeHtml(preview)}</div>
             </a>
           `;
@@ -117,18 +180,35 @@
       return;
     }
     const summary = t.current_summary || 'No summary written yet.';
-    const sessionsLine = t.session_count_estimate
-      ? `Started ${fmtDate(t.start_date)} · ~${t.session_count_estimate} sessions (as of ${fmtDate(t.session_count_as_of)})`
-      : `Started ${fmtDate(t.start_date)}`;
 
     APP.innerHTML = `
       <a class="back-link" href="#/">← Roster</a>
       <div class="trainee-detail">
-        <div class="header-row">
+        <div class="detail-header">
           <h1>${escapeHtml(t.name)}</h1>
-          ${t.active ? '' : '<span class="badge muted">Inactive</span>'}
+          ${t.active
+            ? '<span class="badge active">Active</span>'
+            : '<span class="badge muted">Inactive</span>'}
         </div>
-        <p class="subtitle">${escapeHtml(sessionsLine)}</p>
+        <dl class="detail-meta">
+          <div>
+            <dt>Started</dt>
+            <dd>${fmtDateShort(t.start_date)}</dd>
+          </div>
+          ${t.session_count_estimate ? `
+            <div>
+              <dt>Sessions</dt>
+              <dd>~${t.session_count_estimate}</dd>
+            </div>
+            <div>
+              <dt>As of</dt>
+              <dd>${fmtDateShort(t.session_count_as_of)}</dd>
+            </div>` : ''}
+          <div>
+            <dt>ID</dt>
+            <dd>${escapeHtml(t.id)}</dd>
+          </div>
+        </dl>
         <div class="summary-card">
           <span class="summary-label">Progress summary</span>
           ${escapeHtml(summary).replace(/\n+/g, '<br><br>')}
@@ -154,16 +234,20 @@
     const sessions = [...(idx.sessions || [])].sort((a, b) => b.date.localeCompare(a.date));
 
     APP.innerHTML = `
-      <h1>Sessions</h1>
-      <p class="subtitle">${sessions.length} archived session${sessions.length === 1 ? '' : 's'}, most recent first.</p>
+      <span class="page-eyebrow">Session Archive</span>
+      <h1 class="page-title">Sessions</h1>
+      <p class="page-subtitle">${sessions.length} archived session${sessions.length === 1 ? '' : 's'}, most recent first.</p>
       <ul class="session-list">
         ${sessions.map(s => `
           <li>
             <a href="#/session/${encodeURIComponent(s.date)}">
-              <div class="date">${escapeHtml(fmtSessionLabel(s.date))}</div>
-              ${s.attendees && s.attendees.length
-                ? `<div class="attendees">${escapeHtml(s.attendees.join(', '))}</div>`
-                : ''}
+              <span class="date-stamp">${escapeHtml(fmtSessionStamp(s.date))}</span>
+              <div>
+                <div class="date-label">${escapeHtml(fmtSessionLabel(s.date))}</div>
+                ${s.attendees && s.attendees.length
+                  ? `<div class="attendees">${escapeHtml(s.attendees.join(', '))}</div>`
+                  : ''}
+              </div>
             </a>
           </li>
         `).join('')}
@@ -216,12 +300,15 @@
     renderHome();
   }
 
+  /* ---------- Wire up ---------- */
+  THEME_BTN && THEME_BTN.addEventListener('click', toggleTheme);
   window.addEventListener('hashchange', route);
   window.addEventListener('DOMContentLoaded', () => {
+    updateThemeMeta(effectiveTheme());
     route();
     loadNotesIndex().then(idx => {
       if (idx && idx.last_updated) {
-        LAST_UPDATED.textContent = `Last updated ${fmtDate(idx.last_updated)}`;
+        LAST_UPDATED.textContent = `LAST UPDATED · ${fmtDateShort(idx.last_updated)}`;
       }
     }).catch(() => { /* swallow */ });
   });
