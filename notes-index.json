@@ -1,6 +1,19 @@
 {
-  "last_updated": "2026-05-12",
+  "last_updated": "2026-05-15",
   "sessions": [
+    {
+      "date": "2026-05-15",
+      "attendees": [
+        "Jack",
+        "Tyler Skelton",
+        "Jeff",
+        "Michael Wilson",
+        "Brandon",
+        "Dalton",
+        "Nick",
+        "DC"
+      ]
+    },
     {
       "date": "2026-05-12",
       "attendees": [
