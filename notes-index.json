@@ -1,6 +1,30 @@
 {
-  "last_updated": "2026-06-02",
+  "last_updated": "2026-06-12",
   "sessions": [
+    {
+      "date": "2026-06-12",
+      "attendees": [
+        "Michael",
+        "Tyler",
+        "Brandon",
+        "Jack",
+        "Jeff",
+        "Dalton"
+      ]
+    },
+    {
+      "date": "2026-06-09",
+      "attendees": [
+        "Jack",
+        "Brandon",
+        "Jeff",
+        "Michael Wilson",
+        "Hailey Stokely",
+        "Dalton",
+        "Jacob Renzo",
+        "Damien"
+      ]
+    },
     {
       "date": "2026-06-02",
       "attendees": [
