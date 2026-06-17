@@ -1,6 +1,20 @@
 {
-  "last_updated": "2026-06-12",
+  "last_updated": "2026-06-16",
   "sessions": [
+    {
+      "date": "2026-06-16",
+      "attendees": [
+        "Michael Wilson",
+        "Hailey Stokely",
+        "Dalton",
+        "Damian",
+        "Brandon",
+        "Jeff",
+        "Jack",
+        "Jacob Renzo",
+        "Jaden (new)"
+      ]
+    },
     {
       "date": "2026-06-12",
       "attendees": [
@@ -22,7 +36,7 @@
         "Hailey Stokely",
         "Dalton",
         "Jacob Renzo",
-        "Damien"
+        "Damian"
       ]
     },
     {
@@ -34,7 +48,7 @@
         "Jack",
         "Brandon",
         "Dalton",
-        "Damien (new)",
+        "Damian (new)",
         "Jacob Renzo (new)"
       ]
     },
