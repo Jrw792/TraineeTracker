@@ -1,6 +1,30 @@
 {
-  "last_updated": "2026-07-10",
+  "last_updated": "2026-07-21",
   "sessions": [
+    {
+      "date": "2026-07-21",
+      "attendees": [
+        "Michael",
+        "Hailey",
+        "Jack",
+        "Jeff",
+        "Brandon",
+        "Damian",
+        "Tyler"
+      ]
+    },
+    {
+      "date": "2026-07-17",
+      "attendees": [
+        "Michael",
+        "Hailey",
+        "Jeff",
+        "Brandon",
+        "Damian",
+        "Jack",
+        "Dalton"
+      ]
+    },
     {
       "date": "2026-07-10",
       "attendees": [
